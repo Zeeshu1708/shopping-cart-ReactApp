@@ -1,0 +1,39 @@
+@import "colors";
+
+nav{
+    background-color: $secondary;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2.5rem;
+
+    >h2{
+        text-transform: uppercase;
+        color: $primary;
+    }
+
+    >div{
+        display: flex;
+        align-items: center;
+
+        >a{
+            color: $primary;
+            font-size: 1.2rem;
+            margin: 0 1rem 0;
+            transition: all 0.3s;
+            &:hover{
+                opacity: 0.6;
+            }
+            >p{
+                position: absolute;
+                background-color: $teritary;
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                font: 900 0.9rem "roboto";
+                display: grid;
+                place-items: center;
+                transform: translate(80%,-80%);
+            }
+        }
+    }
+}
