@@ -4,7 +4,10 @@ import Cart from "./components/Cart";
 import "./style/app.scss";
 import "./style/Header.scss";
 import "./style/Home.scss";
+import "./style/Cart.scss";
+import "./style/mediaquery.scss";
 import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -14,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
+      <Toaster />
     </Router>
   );
 }
