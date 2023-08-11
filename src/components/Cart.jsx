@@ -1,19 +1,51 @@
 import React from 'react'
 import { AiFillDelete } from "react-icons/ai";
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-hot-toast';
 
-const img1 = "https://istyle.hu/media/catalog/product/cache/image/700x700/e9c3970ab036de70892d86c6d221abfe/m/a/macbook_pro_13_in_space_gray_pdp_image_position-2__wwen_7.jpg";
 
 const Cart = () => {
+
+  const { cartItems,subTotal,shipping,tax,total } = useSelector((state)=>state.cart);
+
+  const dispatch = useDispatch();
+  
+  const incrementHandler = (id) =>{
+    dispatch({type:"addToCart",payload:{ id }});
+    dispatch({type:"calculatePrice"});
+    // console.log(options);
+    // toast.success("Added To Cart");
+  };
+  const decrementHandler = (id) =>{
+    dispatch({type:"decrement",payload:id});
+    dispatch({type:"calculatePrice"});
+    // console.log(options);
+  };
+  const deleteHandler = (id) =>{
+    dispatch({type:"deletefromcart",payload:id});
+    dispatch({type:"calculatePrice"});
+
+    // console.log(options);
+    toast.error("Item Removed From Cart");
+    };
+
+
   return (
     <div className="cart">
-      <main>
-      <CartItems imgSrc={img1} name={"Mackbook"} price={"80,000"} qty={1} id={'jyesjydxwe'}/>
+      <main>{
+        cartItems.length > 0 ?(
+          cartItems.map((i)=>(
+            <CartItems imgSrc={i.imgSrc} name={i.name} price={i.price} qty={i.quantity} id={i.id} key={i.id} decrement={decrementHandler} increment={incrementHandler} deleteHandler={deleteHandler}/>
+          )) 
+        ): (
+          <h1>No Items Yet</h1>
+        )}
       </main>
       <aside>
-        <h2>Subtotal: ₹{2000}</h2>
-        <h2>Shipping: ₹{200}</h2>
-        <h2>Tax: ₹{20}</h2>
-        <h2>Total: ₹{2220}</h2>
+        <h2>Subtotal: ₹{subTotal}</h2>
+        <h2>Shipping: ₹{shipping}</h2>
+        <h2>Tax: ₹{tax}</h2>
+        <h2>Total: ₹{total}</h2>
       </aside>
     </div>
   )
@@ -34,5 +66,5 @@ const CartItems = ({imgSrc,name,price,qty,decrement,increment,deleteHandler,id})
     <AiFillDelete onClick={()=>deleteHandler(id)}/>
   </div>
 );
-export default Cart
+export default Cart;
 

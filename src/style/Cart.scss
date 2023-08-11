@@ -9,12 +9,14 @@
         padding: 2rem;
         overflow-y: auto;
         color: $primary;
-
+        margin-top: 12%;
+        
+        >h1{
+            color: $teritary;
+            font: 100 2rem "Roboto";
+        }
     }
-    >h1{
-        color: $teritary;
-        font: 100 2rem "Roboto";
-    }
+    
 
     >aside{
         border-radius: 100px 0 0 100px;
@@ -51,7 +53,7 @@
     img{
         height: 100%;
         width: 100%;
-        object-fit: cover;
+        object-fit: contain;
     }
 
     >div{
@@ -83,9 +85,9 @@
         font-size: 1.2rem;
         display: inline-block;
         margin: auto;
-        color: $secondary;
+        color: rgb(255, 54, 54);
         &:hover{
-            color: $secondarydark;
+            color: rgb(160, 12, 12);
         }
     }
 }

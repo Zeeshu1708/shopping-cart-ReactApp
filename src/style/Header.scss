@@ -5,9 +5,12 @@ nav{
     display: flex;
     justify-content: space-between;
     padding: 1rem 2.5rem;
+    width: 100%;
+    position: fixed;
+    z-index: 500;
 
     >h2{
-        text-transform: uppercase;
+        // text-transform: uppercase;
         color: $primary;
     }
 
